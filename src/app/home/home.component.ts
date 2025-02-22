@@ -21,4 +21,8 @@ import { Observable } from 'rxjs';
 export class HomeComponent {
   protected movies$: Observable<Movie[]> = inject(MoviesService).getMovies();
   protected favoritesService = inject(FavoritesService);
+  private moviesService = inject(MoviesService);
+  filter(title: string, year: string) {
+    this.movies$ = this.moviesService.filterMovieList(title, year);
+ }
 }
